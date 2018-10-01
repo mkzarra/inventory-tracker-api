@@ -9,12 +9,9 @@ const itemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  perishable: {
-    type: Boolean,
-    required: true,
-    expiration: {
-      type: Date
-    }
+  expiration: {
+    type: Date,
+    required: true
   },
   volume: {
     type: Number,
