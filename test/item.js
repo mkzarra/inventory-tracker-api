@@ -18,8 +18,11 @@ let itemId
 
 describe('Items', () => {
   const itemParams = {
-    title: '13 JavaScript tricks WDI instructors don\'t want you to know',
-    text: 'You won\'believe number 8!'
+    name,
+    storage,
+    expiration,
+    volume,
+    unit
   }
 
   before(done => {
@@ -63,7 +66,7 @@ describe('Items', () => {
         .end((e, res) => {
           res.should.have.status(200)
           res.body.item.should.be.a('object')
-          res.body.item.title.should.eql(itemParams.title)
+          res.body.item.name.should.eql(itemParams.name)
           done()
         })
     })
@@ -103,15 +106,15 @@ describe('Items', () => {
   })
 
   describe('POST /items', () => {
-    it('should not POST an item without a title', done => {
-      let noTitle = {
-        text: 'Untitled',
+    it('should not POST an item without a name', done => {
+      let noName = {
+        volume: 'Untitled',
         owner: 'fakedID'
       }
       chai.request(server)
         .post('/items')
         .set('Authorization', `Bearer ${token}`)
-        .send({ item: noTitle })
+        .send({ item: noName })
         .end((e, res) => {
           res.should.have.status(422)
           res.should.be.a('object')
@@ -119,15 +122,15 @@ describe('Items', () => {
         })
     })
 
-    it('should not POST an item without text', done => {
-      let noText = {
-        title: 'Not a very good item, is it?',
+    it('should not POST an item without volume', done => {
+      let noVolume = {
+        name: 'Not a very good item, is it?',
         owner: 'fakeID'
       }
       chai.request(server)
         .post('/items')
         .set('Authorization', `Bearer ${token}`)
-        .send({ item: noText })
+        .send({ item: noVolume })
         .end((e, res) => {
           res.should.have.status(422)
           res.should.be.a('object')
@@ -147,8 +150,8 @@ describe('Items', () => {
 
     it('should POST an item with the correct params', done => {
       let validItem = {
-        title: 'I ran a shell command. You won\'t believe what happened next!',
-        text: 'it was rm -rf / --no-preserve-root'
+        name: 'I ran a shell command. You won\'t believe what happened next!',
+        volume: 'it was rm -rf / --no-preserve-root'
       }
       chai.request(server)
         .post('/items')
@@ -158,8 +161,8 @@ describe('Items', () => {
           res.should.have.status(201)
           res.body.should.be.a('object')
           res.body.should.have.property('item')
-          res.body.item.should.have.property('title')
-          res.body.item.title.should.eql(validItem.title)
+          res.body.item.should.have.property('name')
+          res.body.item.name.should.eql(validItem.name)
           done()
         })
     })
@@ -169,8 +172,8 @@ describe('Items', () => {
     let itemId
 
     const fields = {
-      title: 'Find out which HTTP status code is your spirit animal',
-      text: 'Take this 4 question quiz to find out!'
+      name: 'Find out which HTTP status code is your spirit animal',
+      volume: 'Take this 4 question quiz to find out!'
     }
 
     before(async function () {
@@ -207,8 +210,8 @@ describe('Items', () => {
         .end((e, res) => {
           res.should.have.status(200)
           res.body.should.be.a('object')
-          res.body.item.title.should.eql(fields.title)
-          res.body.item.text.should.eql(fields.text)
+          res.body.item.name.should.eql(fields.name)
+          res.body.item.volume.should.eql(fields.volume)
           done()
         })
     })
