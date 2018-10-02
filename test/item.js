@@ -1,13 +1,13 @@
 process.env.TESTENV = true
 
 let Item = require('../app/models/item.js')
-let User = require('../app/models/user')
+let User = require('../app/models/user.js')
 
 const crypto = require('crypto')
 
 let chai = require('chai')
 let chaiHttp = require('chai-http')
-let server = require('../server')
+let server = require('../server.js')
 chai.should()
 
 chai.use(chaiHttp)
