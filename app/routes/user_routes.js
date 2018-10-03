@@ -31,8 +31,8 @@ router.post('/sign-up', (req, res) => {
     // the password is an empty string
     .then(credentials => {
       if (!credentials ||
-          !credentials.password ||
-          credentials.password !== credentials.password_confirmation) {
+        !credentials.password ||
+        credentials.password !== credentials.password_confirmation) {
         throw new BadParamsError()
       }
     })
@@ -49,7 +49,9 @@ router.post('/sign-up', (req, res) => {
     .then(user => User.create(user))
     // send the new user object back with status 201, but `hashedPassword`
     // won't be send because of the `transform` in the User model
-    .then(user => res.status(201).json({ user: user.toObject() }))
+    .then(user => res.status(201).json({
+      user: user.toObject()
+    }))
     // pass any errors along to the error handler
     .catch(err => handle(err, res))
 })
