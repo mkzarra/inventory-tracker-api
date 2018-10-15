@@ -17,7 +17,9 @@ const User = require('../models/user')
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
 // it will also set `res.user`
-const requireToken = passport.authenticate('bearer', { session: false })
+const requireToken = passport.authenticate('bearer', {
+  session: false
+})
 
 // instantiate a router (mini app that only handles routes)
 const router = express.Router()
@@ -63,7 +65,9 @@ router.post('/sign-in', (req, res) => {
   let user
 
   // find a user based on the email that was passed
-  User.findOne({ email: req.body.credentials.email })
+  User.findOne({
+      email: req.body.credentials.email
+    })
     .then(record => {
       // if we didn't find a user with that email, send 422
       if (!record) {
@@ -91,7 +95,9 @@ router.post('/sign-in', (req, res) => {
     })
     .then(user => {
       // return status 201, the email, and the new token
-      res.status(201).json({ user: user.toObject() })
+      res.status(201).json({
+        user: user.toObject()
+      })
     })
     .catch(err => handle(err, res))
 })
@@ -103,7 +109,9 @@ router.patch('/change-password', requireToken, (req, res) => {
   // `req.user` will be determined by decoding the token payload
   User.findById(req.user.id)
     // save user outside the promise chain
-    .then(record => { user = record })
+    .then(record => {
+      user = record
+    })
     // check that the old password is correct
     .then(() => bcrypt.compare(req.body.passwords.old, user.hashedPassword))
     // `correctPassword` will be true if hashing the old password ends up the
