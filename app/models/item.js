@@ -6,11 +6,11 @@ const itemSchema = new mongoose.Schema({
     required: true
   },
   category: {
-    type: [],
+    type: String,
     required: true
   },
   storage: {
-    type: [],
+    type: String,
     required: true
   },
   expiration: {
