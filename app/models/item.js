@@ -5,8 +5,12 @@ const itemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  category: {
+    type: [],
+    required: true
+  },
   storage: {
-    type: String,
+    type: [],
     required: true
   },
   expiration: {
