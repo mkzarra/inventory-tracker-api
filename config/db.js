@@ -5,8 +5,8 @@ const mongooseBaseName = 'inventory-tracker'
 
 // create the mongodb uri for development and test
 const database = {
-  development: `mongodb://localhost/${mongooseBaseName}-development`,
-  test: `mongodb://localhost/${mongooseBaseName}-test`
+  development: `mongodb://localhost/27017${mongooseBaseName}-development`,
+  test: `mongodb://localhost/27017${mongooseBaseName}-test`
 }
 
 // Identify if development environment is test or development
