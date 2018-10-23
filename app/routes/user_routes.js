@@ -10,7 +10,7 @@ const bcrypt = require('bcrypt')
 const bcryptSaltRounds = 10
 
 const handle = require('../../lib/error_handler')
-const BadParamsError = require('../../lib/custom_errors').BadParamsError
+const { BadParamsError } = require('../../lib/custom_errors')
 
 const User = require('../models/user')
 
