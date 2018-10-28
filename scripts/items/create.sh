@@ -11,6 +11,7 @@ curl "${API}${URL_PATH}" \
   --data '{
     "item": {
       "name": "'"${NAME}"'",
+      "category": "'"${CATEGORY}"'",
       "storage": "'"${STORAGE}"'",
       "expiration": "'"${EXPIRATION}"'",
       "volume": "'"${VOLUME}"'",

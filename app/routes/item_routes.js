@@ -55,7 +55,7 @@ router.get('/items/:id', (req, res) => {
 
 // CREATE
 // POST /items
-router.post('/items', requireToken, (req, res) => {
+router.post('/items/new', requireToken, (req, res) => {
   // set owner of new item to be current user
   console.log(req.body)
   req.body.item.owner = req.user.id
