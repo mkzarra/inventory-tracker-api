@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const pantrySchema = new mongoose.Schema({
   owner: {
@@ -6,8 +6,8 @@ const pantrySchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  items: [{
-    item_id: {
+  pantryItem: {
+    item: {
       type: mongoose.Schema.type.ObjectId,
       ref: 'Item',
       require: true
@@ -19,12 +19,8 @@ const pantrySchema = new mongoose.Schema({
         validator: Number.isInteger,
         message: '{VALUE} is not an integer value'
       }
-    },
-    storage: {
-      type: ['refrigerator', 'freezer', 'cabinet'],
-      required: true
     }
-  }]
-})
+  }
+});
 
-module.exports = mongoose.model('Pantry', pantrySchema)
+module.exports = mongoose.model('Pantry', pantrySchema);

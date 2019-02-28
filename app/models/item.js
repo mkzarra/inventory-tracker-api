@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const itemSchema = new mongoose.Schema({
   name: {
@@ -24,14 +24,9 @@ const itemSchema = new mongoose.Schema({
   unit: {
     type: String,
     required: true
-  },
-  owner: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
   }
 }, {
-  timestamps: true
-})
+    timestamps: true
+  });
 
-module.exports = mongoose.model('Item', itemSchema)
+module.exports = mongoose.model('Item', itemSchema);
