@@ -61,6 +61,7 @@ router.post('/sign-up', (req, res) => {
 // SIGN IN
 // POST /sign-in
 router.post('/sign-in', (req, res) => {
+  console.log(req);
   const pw = req.body.credentials.password
   let user
 
