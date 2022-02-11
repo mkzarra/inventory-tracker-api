@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ajv": "^5.5.2",
+    "ajv": "^6.12.3",
     "bcrypt": "^1.0.3",
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
